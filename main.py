@@ -64,6 +64,40 @@ def check(mat, player):
         res = True
     return res
 
+def check_3_tokens(mat):
+    sol = []
+    for row in range(len(mat)-1, -1, -1):
+        for col in range(int(len(mat[0])/2)+1):
+            if mat[row][col] == 1 and mat[row][col+1] == 1 and mat[row][col+2] == 1 and mat[row][col+3] == 0:
+                sol.append((row, col+3))
+            elif mat[row][col] == 1 and mat[row][col+1] == 1 and mat[row][col+2] == 0 and mat[row][col+3] == 1:
+                sol.append((row, col+2))
+            elif mat[row][col] == 1 and mat[row][col+1] == 0 and mat[row][col+2] == 1 and mat[row][col+3] == 1:
+                sol.append((row, col+1))
+            elif mat[row][col] == 0 and mat[row][col+1] == 1 and mat[row][col+2] == 1 and mat[row][col+3] == 1:
+                sol.append((row, col))
+    for col in range(len(mat[0])):
+        for row in range(len(mat)-1, int(len(mat)/2)-1, -1):
+            if mat[row][col] == 1 and mat[row-1][col] == 1 and mat[row-2][col] == 1 and mat[row-3][col] == 0:
+                sol.append((row-3, col))
+            elif mat[row][col] == 1 and mat[row-1][col] == 1 and mat[row-2][col] == 0 and mat[row-3][col] == 1:
+                sol.append((row-2, col))
+            elif mat[row][col] == 1 and mat[row-1][col] == 0 and mat[row-2][col] == 1 and mat[row-3][col] == 1:
+                sol.append((row-1, col))
+            elif mat[row][col] == 0 and mat[row-1][col] == 1 and mat[row-2][col] == 1 and mat[row-3][col] == 1:
+                sol.append((row, col))
+    for row in range(len(mat)-1, int(len(mat)/2)-1, -1):
+        for col in range(int(len(mat[0])/2)+1):
+            if mat[row][col] == 1 and mat[row-1][col+1] == 1 and mat[row-2][col+2] == 1 and mat[row-3][col+3] == 0:
+                sol.append((row-3, col+3))
+            elif mat[row][col] == 1 and mat[row-1][col+1] == 1 and mat[row-2][col+2] == 0 and mat[row-3][col+3] == 1:
+                sol.append((row-2, col+2))
+            elif mat[row][col] == 1 and mat[row-1][col+1] == 0 and mat[row-2][col+2] == 1 and mat[row-3][col+3] == 1:
+                sol.append((row-1, col+1))
+            elif mat[row][col] == 0 and mat[row-1][col+1] == 1 and mat[row-2][col+2] == 1 and mat[row-3][col+3] == 1:
+                sol.append((row, col))
+    return sol
+
 # AI: 
 def Ai(mat):
     pass
