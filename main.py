@@ -39,6 +39,13 @@ def check_rows(mat, player):
                 res = True
     return res
 
+def check_columns(mat, player):
+    res = False
+    for col in range(len(mat[0])):
+        for row in range(len(mat)-1, int(len(mat)/2), -1):
+            if mat[row][col] == player and mat[row-1][col] == player and mat[row-2][col] == player and mat[row-3][col] == player:
+                res = True
+    return res
 
 # AI: 
 
