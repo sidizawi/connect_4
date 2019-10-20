@@ -3,7 +3,7 @@ author : Zawi, Sidi M.
 github : sidizawi
 """
 # IMPORTS:
-
+from random import randint, choice
 
 # FUNCTIONS:
 # Matrix:
@@ -29,6 +29,7 @@ def display(mat):
                 print('O', end=' ')
         print('|')
     print('  1 2 3 4 5 6 7')
+    print()
 
 # Check functions:
 def check_rows(mat, player): # check rows
@@ -100,7 +101,21 @@ def check_3_tokens(mat):
 
 # AI: 
 def Ai(mat):
-    pass
+    sol = check_3_tokens(mat)
+    if len(sol) == 0:
+        col = randint(0, 6)
+        while mat[0][col] != 0:
+            col = randint(0, 6)
+    else:
+        col = choice(sol)
+    i = 5
+    while i>=0:
+        if mat[i][col] == 0:
+            mat[i][col] = 2
+            i = -1
+        i -= 1
+    print('AI  > ', col+1)
+    return mat
 
 # Main functions:
 def change_player(player):
@@ -111,9 +126,9 @@ def change_player(player):
     return player
 
 def fill_mat(mat, player):
-    col = input('player 1 >')
+    col = int(input('player 1 >'))-1
     while mat[0][col] != 0:
-        col = input('This column is full')
+        col = int(input('This column is full'))-1
     i = 5
     while i>= 0:
         if mat[i][col] == 0:
@@ -133,6 +148,7 @@ def main():
             mat = fill_mat(mat, player)
         else:
             mat = Ai(mat)
+        display(mat)
         res = check(mat, player)
         if res and player == 1:
             print('Bravo, you won')
