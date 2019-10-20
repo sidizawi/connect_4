@@ -30,9 +30,15 @@ def display(mat):
         print('|')
     print('    A B C D E F G')
 
-
-
 # Check functions:
+def check_rows(mat, player):
+    res = False
+    for row in range(len(mat)-1, -1, -1):
+        for col in range(int(len(mat[0])/2)+1):
+            if mat[row][col] == player and mat[row][col+1] == player and mat[row][col+2] == player and mat[row][col+3] == player:
+                res = True
+    return res
+
 
 # AI: 
 
