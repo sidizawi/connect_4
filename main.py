@@ -17,6 +17,20 @@ def matrix():
     return mat
 
 # Display:
+def display(mat):
+    for i in range(len(mat)):
+        print(i+1, '|', end=" ")
+        for j in range(len(mat[0])):
+            if mat[i][j] == 0:
+                print(' ', end=' ')
+            elif mat[i][j] == 1:
+                print('X', end=' ')
+            else:
+                print('O', end=' ')
+        print('|')
+    print('    A B C D E F G')
+
+
 
 # Check functions:
 
