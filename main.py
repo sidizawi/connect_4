@@ -65,6 +65,8 @@ def check(mat, player):
     return res
 
 # AI: 
+def Ai(mat):
+    pass
 
 # Main functions:
 def change_player(player):
@@ -85,7 +87,27 @@ def fill_mat(mat, player):
             i = -1
         i -= 1
     return mat
-    
+
+def main():
+    mat = matrix()
+    display(mat)
+    player = 1
+    res = False
+    i = 1
+    while not res and i <= 49:
+        if player == 1:
+            mat = fill_mat(mat, player)
+        else:
+            mat = Ai(mat)
+        res = check(mat, player)
+        if res and player == 1:
+            print('Bravo, you won')
+        elif res:
+            print('Game Over, AI won')
+        elif i == 49:
+            print('DRAW!')
+        player = change_player(player)
+        i += 1
 
 # BODY:
 
