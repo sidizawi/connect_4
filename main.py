@@ -19,7 +19,7 @@ def matrix():
 # Display:
 def display(mat):
     for i in range(len(mat)):
-        print(i+1, '|', end=" ")
+        print('|', end=" ")
         for j in range(len(mat[0])):
             if mat[i][j] == 0:
                 print(' ', end=' ')
@@ -28,7 +28,7 @@ def display(mat):
             else:
                 print('O', end=' ')
         print('|')
-    print('    A B C D E F G')
+    print('  1 2 3 4 5 6 7')
 
 # Check functions:
 def check_rows(mat, player): # check rows
