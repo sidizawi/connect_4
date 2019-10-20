@@ -55,6 +55,15 @@ def check_diag(mat, player): # check diagonals
                 res = True
     return res
 
+def check(mat, player):
+    res_row = check_rows(mat, player)
+    res_col = check_columns(mat, player)
+    res_diag = check_diag(mat, player)
+    res = False
+    if res_col or res_row or res_diag:
+        res = True
+    return res
+
 # AI: 
 
 # Main:

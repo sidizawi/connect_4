@@ -75,4 +75,29 @@ class CheckDiagTest(unittest.TestCase):
 		mat[2][3] = 2
 		self.assertEqual(True, sol.check_diag(mat, 2))
 
+class CheckTest(unittest.TestCase):
+	def test_3_tokens(self):
+		mat = sol.matrix()
+		mat[5][0] = 1
+		mat[5][1] = 1
+		mat[5][2] = 1
+		self.assertEqual(False, sol.check(mat, 1))
+		mat[5][0] = 2
+		mat[4][1] = 2
+		mat[3][2] = 2
+		self.assertEqual(False, sol.check(mat, 2))
+	
+	def test_4_tokens(self):
+		mat = sol.matrix()
+		mat[5][0] = 2
+		mat[4][1] = 2
+		mat[3][2] = 2
+		mat[2][3] = 2
+		self.assertEqual(True, sol.check(mat, 2))
+		mat[5][0] = 1
+		mat[5][1] = 1
+		mat[5][2] = 1
+		mat[5][3] = 1
+		self.assertEqual(True, sol.check(mat, 1))
+
 unittest.main()
