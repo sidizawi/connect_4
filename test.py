@@ -100,4 +100,9 @@ class CheckTest(unittest.TestCase):
 		mat[5][3] = 1
 		self.assertEqual(True, sol.check(mat, 1))
 
+class ChangePlayerTest(unittest.TestCase):
+	def test(self):
+		self.assertEqual(1, sol.change_player(2))
+		self.assertEqual(2, sol.change_player(1))
+
 unittest.main()

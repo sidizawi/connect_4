@@ -66,7 +66,13 @@ def check(mat, player):
 
 # AI: 
 
-# Main:
+# Main functions:
+def change_player(player):
+    if player == 1:
+        player = 2
+    else:
+        player = 1
+    return player
 
 
 # BODY:
