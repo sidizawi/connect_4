@@ -74,6 +74,18 @@ def change_player(player):
         player = 1
     return player
 
+def fill_mat(mat, player):
+    col = input('player 1 >')
+    while mat[0][col] != 0:
+        col = input('This column is full')
+    i = 5
+    while i>= 0:
+        if mat[i][col] == 0:
+            mat[i][col] = player
+            i = -1
+        i -= 1
+    return mat
+    
 
 # BODY:
 
