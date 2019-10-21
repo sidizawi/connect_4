@@ -50,9 +50,13 @@ def check_columns(mat, player): # check columns
 
 def check_diag(mat, player): # check diagonals
     res = False
-    for row in range(len(mat)-1, int(len(mat)/2)-1, -1):
+    for row in range(len(mat)-1, int(len(mat)/2)-1, -1): # Diagonals to right
         for col in range(int(len(mat[0])/2)+1):
             if mat[row][col] == player and mat[row-1][col+1] == player and mat[row-2][col+2] == player and mat[row-3][col+3] == player:
+                res = True
+    for row in range(len(mat)-1, int(len(mat)/2)-1, -1): # Diagonals to left
+        for col in range(len(mat[0])-1,int(len(mat[0])/2)-1, -1):
+            if mat[row][col] == player and mat[row-1][col-1] == player and mat[row-2][col-2] == player and mat[row-3][col-3] == player:
                 res = True
     return res
 
@@ -67,7 +71,7 @@ def check(mat, player):
 
 def check_3_tokens(mat):
     sol = []
-    for row in range(len(mat)-1, -1, -1):
+    for row in range(len(mat)-1, -1, -1): # Check rows
         for col in range(int(len(mat[0])/2)+1):
             if mat[row][col] == 1 and mat[row][col+1] == 1 and mat[row][col+2] == 1 and mat[row][col+3] == 0:
                 sol.append(col+3)
@@ -77,7 +81,7 @@ def check_3_tokens(mat):
                 sol.append(col+1)
             elif mat[row][col] == 0 and mat[row][col+1] == 1 and mat[row][col+2] == 1 and mat[row][col+3] == 1:
                 sol.append(col)
-    for col in range(len(mat[0])):
+    for col in range(len(mat[0])): # Check columns
         for row in range(len(mat)-1, int(len(mat)/2)-1, -1):
             if mat[row][col] == 1 and mat[row-1][col] == 1 and mat[row-2][col] == 1 and mat[row-3][col] == 0:
                 sol.append(col)
@@ -87,7 +91,7 @@ def check_3_tokens(mat):
                 sol.append(col)
             elif mat[row][col] == 0 and mat[row-1][col] == 1 and mat[row-2][col] == 1 and mat[row-3][col] == 1:
                 sol.append(col)
-    for row in range(len(mat)-1, int(len(mat)/2)-1, -1):
+    for row in range(len(mat)-1, int(len(mat)/2)-1, -1): # Check diagonals to right 
         for col in range(int(len(mat[0])/2)+1):
             if mat[row][col] == 1 and mat[row-1][col+1] == 1 and mat[row-2][col+2] == 1 and mat[row-3][col+3] == 0:
                 sol.append(col+3)
@@ -96,6 +100,16 @@ def check_3_tokens(mat):
             elif mat[row][col] == 1 and mat[row-1][col+1] == 0 and mat[row-2][col+2] == 1 and mat[row-3][col+3] == 1:
                 sol.append(col+1)
             elif mat[row][col] == 0 and mat[row-1][col+1] == 1 and mat[row-2][col+2] == 1 and mat[row-3][col+3] == 1:
+                sol.append(col)
+    for row in range(len(mat)-1, int(len(mat)/2)-1, -1): # Check diagonals to left
+        for col in range(len(mat[0])-1,int(len(mat[0])/2)-1, -1):
+            if mat[row][col] == 1 and mat[row-1][col-1] == 1 and mat[row-2][col-2] == 1 and mat[row-3][col-3] == 0:
+                sol.append(col-3)
+            elif mat[row][col] == 1 and mat[row-1][col-1] == 1 and mat[row-2][col-2] == 0 and mat[row-3][col-3] == 1:
+                sol.append(col-2)
+            elif mat[row][col] == 1 and mat[row-1][col-1] == 0 and mat[row-2][col-2] == 1 and mat[row-3][col-3] == 1:
+                sol.append(col-1)
+            elif mat[row][col] == 0 and mat[row-1][col-1] == 1 and mat[row-2][col-2] == 1 and mat[row-3][col-3] == 1:
                 sol.append(col)
     return sol
 

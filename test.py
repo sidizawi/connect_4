@@ -74,6 +74,11 @@ class CheckDiagTest(unittest.TestCase):
 		mat[3][2] = 2
 		mat[2][3] = 2
 		self.assertEqual(True, sol.check_diag(mat, 2))
+		mat[5][6] = 2
+		mat[4][5] = 2
+		mat[3][4] = 2
+		mat[2][3] = 2
+		self.assertEqual(True, sol.check_diag(mat, 2))
 
 class CheckTest(unittest.TestCase):
 	def test_3_tokens(self):
